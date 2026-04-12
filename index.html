@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة المهارات الرقمية - منصة تعليمية للأطفال</title>
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Cairo for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Tailwind Config for Arabic/RTL -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#7C3AED',
+                        accent: '#F59E0B',
+                        success: '#10B981',
+                        info: '#3B82F6',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-cairo bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    
+    <!-- Header Component -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        🎓
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">رحلة المهارات الرقمية</h1>
+                        <p class="text-sm text-gray-500">منصة تعليمية للأطفال</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#home" class="text-gray-600 hover:text-primary transition font-semibold">الرئيسية</a>
+                    <a href="#weeks" class="text-gray-600 hover:text-primary transition font-semibold">الأسابيع</a>
+                    <a href="#ai-lab" class="text-gray-600 hover:text-primary transition font-semibold">معمل الذكاء الاصطناعي</a>
+                    <a href="#parents" class="text-gray-600 hover:text-primary transition font-semibold">دليل الوالدين</a>
+                </nav>
+                
+                <!-- Progress Badge -->
+                <div class="flex items-center gap-2 bg-gradient-to-r from-success to-emerald-400 text-white px-4 py-2 rounded-full text-sm font-bold">
+                    <span>🏆</span>
+                    <span id="total-progress">0%</span>
+                    <span>مكتمل</span>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t pt-4">
+                <a href="#home" class="block py-2 text-gray-600 hover:text-primary font-semibold">الرئيسية</a>
+                <a href="#weeks" class="block py-2 text-gray-600 hover:text-primary font-semibold">الأسابيع</a>
+                <a href="#ai-lab" class="block py-2 text-gray-600 hover:text-primary font-semibold">معمل الذكاء الاصطناعي</a>
+                <a href="#parents" class="block py-2 text-gray-600 hover:text-primary font-semibold">دليل الوالدين</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden py-16 md:py-24">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 w-32 h-32 bg-primary rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-40 h-40 bg-secondary rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-accent rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center md:text-right">
+                    <div class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
+                        🚀 ابدأ رحلة التعلم اليوم!
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6 leading-tight">
+                        تعلم المهارات الرقمية
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">بأسلوب ممتع وتفاعلي</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        منصة تعليمية متكاملة تساعد الأطفال على تعلم الحاسوب والإنترنت والبرمجة والذكاء الاصطناعي 
+                        من خلال دروس أسبوعية تفاعلية وأنشطة ممتعة
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#weeks" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition transform inline-flex items-center justify-center gap-2">
+                            <span>ابدأ الرحلة</span>
+                            <span>🎯</span>
+                        </a>
+                        <a href="#parents" class="bg-white text-primary border-2 border-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-white transition inline-flex items-center justify-center gap-2">
+                            <span>دليل الوالدين</span>
+                            <span>👨‍👩‍👧‍👦</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-12">
+                        <div class="bg-white rounded-2xl p-4 text-center shadow-lg">
+                            <div class="text-3xl font-black text-primary">4</div>
+                            <div class="text-sm text-gray-500">أسابيع تعليمية</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 text-center shadow-lg">
+                            <div class="text-3xl font-black text-secondary">20+</div>
+                            <div class="text-sm text-gray-500">مهمة تعليمية</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 text-center shadow-lg">
+                            <div class="text-3xl font-black text-accent">∞</div>
+                            <div class="text-sm text-gray-500">مرح وإبداع</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Illustration -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl p-8">
+                        <div class="bg-white rounded-2xl p-6 shadow-xl">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-blue-100 rounded-xl p-4 text-center">
+                                    <div class="text-4xl mb-2">💻</div>
+                                    <div class="text-sm font-bold text-gray-700">الحاسوب</div>
+                                </div>
+                                <div class="bg-green-100 rounded-xl p-4 text-center">
+                                    <div class="text-4xl mb-2">🌐</div>
+                                    <div class="text-sm font-bold text-gray-700">الإنترنت</div>
+                                </div>
+                                <div class="bg-purple-100 rounded-xl p-4 text-center">
+                                    <div class="text-4xl mb-2">🤖</div>
+                                    <div class="text-sm font-bold text-gray-700">البرمجة</div>
+                                </div>
+                                <div class="bg-orange-100 rounded-xl p-4 text-center">
+                                    <div class="text-4xl mb-2">🧠</div>
+                                    <div class="text-sm font-bold text-gray-700">الذكاء الاصطناعي</div>
+                                </div>
+                            </div>
+                            <div class="mt-6 bg-gradient-to-r from-primary to-secondary text-white rounded-xl p-4 text-center">
+                                <div class="text-2xl font-bold">🎮 تعلم باللعب!</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center text-2xl animate-bounce shadow-lg">
+                        ⭐
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 w-14 h-14 bg-pink-400 rounded-full flex items-center justify-center text-2xl animate-pulse shadow-lg">
+                        🎨
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Dashboard Section -->
+    <section id="weeks" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    📚 الأسابيع التعليمية
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">
+                    رحلة التعلم الأسبوعية
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    كل أسبوع يحتوي على درس جديد وفيديو تعليمي ومهام عملية وتحديات إبداعية
+                </p>
+            </div>
+            
+            <!-- Weeks Grid -->
+            <div id="weeks-container" class="grid md:grid-cols-2 gap-8">
+                <!-- Week cards will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Learning Lab Section -->
+    <section id="ai-lab" class="py-16 bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-white/20 backdrop-blur px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    🤖 معمل الذكاء الاصطناعي
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black mb-4">
+                    استكشف عالم الذكاء الاصطناعي
+                </h2>
+                <p class="text-purple-200 max-w-2xl mx-auto">
+                    أدوات تفاعلية ممتعة تساعدك على فهم الذكاء الاصطناعي وتوليد القصص الإبداعية
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Story Generator -->
+                <div class="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
+                    <div class="text-5xl mb-4">📖</div>
+                    <h3 class="text-2xl font-bold mb-4">مولّد القصص التعليمية</h3>
+                    <p class="text-purple-200 mb-6">
+                        أدخل موضوعاً وسيقوم الذكاء الاصطناعي بإنشاء قصة تعليمية ممتعة لك!
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <input 
+                            type="text" 
+                            id="story-topic"
+                            placeholder="مثال: روبوت يحب المساعدة..."
+                            class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-purple-300 focus:outline-none focus:border-white"
+                        />
+                        <button 
+                            onclick="generateStory()"
+                            class="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white py-3 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition"
+                        >
+                            ✨ أنشئ القصة!
+                        </button>
+                    </div>
+                    
+                    <div id="story-result" class="mt-6 bg-white/10 rounded-xl p-4 hidden">
+                        <div class="text-sm text-purple-200 mb-2">قصتك:</div>
+                        <p id="story-content" class="text-white leading-relaxed"></p>
+                    </div>
+                </div>
+                
+                <!-- Learning Advice -->
+                <div class="bg-white/10 backdrop-blur rounded-3xl p-8 border border-white/20">
+                    <div class="text-5xl mb-4">💡</div>
+                    <h3 class="text-2xl font-bold mb-4">مستشار التعلم الذكي</h3>
+                    <p class="text-purple-200 mb-6">
+                        احصل على نصائح تعليمية مخصصة بناءً على ما تريد تعلمه
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <select 
+                            id="advice-topic"
+                            class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:outline-none focus:border-white"
+                        >
+                            <option value="" class="text-gray-800">اختر موضوعاً...</option>
+                            <option value="computer" class="text-gray-800">الحاسوب</option>
+                            <option value="internet" class="text-gray-800">الإنترنت</option>
+                            <option value="programming" class="text-gray-800">البرمجة</option>
+                            <option value="ai" class="text-gray-800">الذكاء الاصطناعي</option>
+                        </select>
+                        <button 
+                            onclick="getAdvice()"
+                            class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-xl font-bold hover:shadow-lg hover:scale-105 transition"
+                        >
+                            🎯 احصل على النصيحة!
+                        </button>
+                    </div>
+                    
+                    <div id="advice-result" class="mt-6 bg-white/10 rounded-xl p-4 hidden">
+                        <div class="text-sm text-purple-200 mb-2">نصيحتك:</div>
+                        <p id="advice-content" class="text-white leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parents Guide Section -->
+    <section id="parents" class="py-16 bg-gradient-to-br from-green-50 to-teal-50">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-green-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    👨‍👩‍👧‍👦 إرشادات لولي الأمر
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">
+                    دليل الوالدين للتعليم المنزلي
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    نصائح وإرشادات لمساعدة طفلك على الاستفادة القصوى من هذه المنصة التعليمية
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        🕐
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">إدارة وقت الشاشة</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• حدد جلسات تعلم قصيرة (20-30 دقيقة)</li>
+                        <li>• خذ استراحات منتظمة بين الدروس</li>
+                        <li>• شجّع الأنشطة غير الرقمية أيضاً</li>
+                        <li>• تجنب الشاشات قبل النوم بساعة</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        🎯
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">تشجيع التعلم الذاتي</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• دع طفلك يختار المهام التي يحبها</li>
+                        <li>• اسأل أسئلة مفتوحة تحفّز التفكير</li>
+                        <li>• احتفل بالإنجازات الصغيرة</li>
+                        <li>• كن قدوة في حب التعلم</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        ✅
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">متابعة المهام</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• راجع جدول المهام الأسبوعي مع طفلك</li>
+                        <li>• ساعده في وضع خطة يومية واقعية</li>
+                        <li>• تحقق من إنجاز المهام يومياً</li>
+                        <li>• استخدم نظام المكافآت البسيط</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        💬
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">التواصل الفعّال</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• تحدث مع طفلك عما تعلمه يومياً</li>
+                        <li>• اسمع لأسئلته بصدر رحب</li>
+                        <li>• شاركه حماسه لإنجازاته</li>
+                        <li>• شجّعه على شرح ما تعلمه لك</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">الأمان الرقمي</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• راقب نشاط طفلك على الإنترنت</li>
+                        <li>• علّمه عدم مشاركة المعلومات الشخصية</li>
+                        <li>• استخدم أدوات الرقابة الأبوية</li>
+                        <li>• ناقش مخاطر الإنترنت بصراحة</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center text-3xl mb-4">
+                        🎉
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">جعل التعلم ممتعاً</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• حوّل التعلم إلى لعبة وتحدي</li>
+                        <li>• استخدم نظام النقاط والمكافآت</li>
+                        <li>• تعلّم вместе مع طفلك</li>
+                        <li>• احتفل بإكمال كل أسبوع</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Progress Tracking Tip -->
+            <div class="mt-12 bg-white rounded-3xl p-8 shadow-xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">📊 تتبع تقدم طفلك</h3>
+                        <p class="text-gray-600 mb-6">
+                            استخدم لوحة التقدم في أعلى الصفحة لمتابعة إنجازات طفلك. 
+                            كل مهمة مكتملة تزيد من نسبة التقدم الكلي!
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <span class="text-gray-600">مهمة مكتملة</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                                <span class="text-gray-600">مهمة قيد الانتظار</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-100 to-teal-100 rounded-2xl p-6">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4">🏆</div>
+                            <div class="text-3xl font-black text-green-600" id="parent-progress">0%</div>
+                            <div class="text-gray-600">نسبة الإنجاز الكلية</div>
+                            <div class="mt-4 bg-gray-200 rounded-full h-4">
+                                <div id="parent-progress-bar" class="bg-gradient-to-r from-green-500 to-teal-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-xl font-bold">
+                            🎓
+                        </div>
+                        <h3 class="text-xl font-bold">رحلة المهارات الرقمية</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        منصة تعليمية مبتكرة تهدف إلى تعليم الأطفال المهارات الرقمية الأساسية 
+                        بأسلوب ممتع وتفاعلي يناسب عصر الذكاء الاصطناعي.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="#weeks" class="hover:text-white transition">الأسابيع التعليمية</a></li>
+                        <li><a href="#ai-lab" class="hover:text-white transition">معمل الذكاء الاصطناعي</a></li>
+                        <li><a href="#parents" class="hover:text-white transition">دليل الوالدين</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📧 البريد الإلكتروني: info@example.com</li>
+                        <li>📱 الهاتف: +966 XXX XXX XXX</li>
+                        <li>📍 العنوان: المملكة العربية السعودية</li>
+                    </ul>
+                    <div class="flex gap-4 mt-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            📘
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            🐦
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            📸
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Info -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-400">
+                    <div>
+                        <p class="mb-2">
+                            <span class="text-white font-semibold">تطوير:</span> 
+                            المهندس عبدالرحمن مصطفى
+                        </p>
+                        <p>
+                            <span class="text-white font-semibold">لينكد إن:</span> 
+                            <a href="https://linkedin.com/in/abdulrahman-mostafa" target="_blank" class="text-primary hover:underline">
+                                linkedin.com/in/abdulrahman-mostafa
+                            </a>
+                        </p>
+                    </div>
+                    <div class="md:text-left">
+                        <p class="mb-2">
+                            <span class="text-white font-semibold">المنصة مطورة بواسطة:</span> 
+                            مؤسسة نون للتنمية المستدامة
+                        </p>
+                        <p>
+                            <span class="text-white font-semibold">قسم التكنولوجيا والتطوير</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="mt-6 pt-6 border-t border-gray-800 text-center text-gray-500 text-sm">
+                    <p>&copy; 2024 جميع الحقوق محفوظة - رحلة المهارات الرقمية</p>
+                    <p class="mt-2">تم التطوير بكل ❤️ للأطفال العرب</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/data/weeks-data.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/curriculum.js"></script>
+    <script src="/js/progress.js"></script>
+</body>
+</html>

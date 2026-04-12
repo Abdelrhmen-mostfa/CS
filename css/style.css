@@ -1,0 +1,260 @@
+/* Custom Styles for Kids Learning Platform */
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(79, 70, 229, 0.6); }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+}
+
+/* Card Hover Effects */
+.week-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.week-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Checkbox Custom Styling */
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #10B981;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.task-checkbox:checked {
+    background: #10B981;
+}
+
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-checkbox:hover {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Progress Bar Animation */
+.progress-bar-fill {
+    transition: width 1s ease-in-out;
+}
+
+/* Button Ripple Effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+    .text-responsive {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4F46E5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tooltip Styling */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #1F2937;
+    color: white;
+    font-size: 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Badge Animations */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-blue {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.badge-green {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-purple {
+    background: #EDE9FE;
+    color: #5B21B6;
+}
+
+.badge-orange {
+    background: #FFEDD5;
+    color: #9A3412;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+/* Focus States for Accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #4F46E5;
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    header, footer, .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+    }
+    
+    .week-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* Dark Mode Support (Future Enhancement) */
+@media (prefers-color-scheme: dark) {
+    /* Can be enabled later */
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
