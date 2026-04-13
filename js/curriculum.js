@@ -70,25 +70,15 @@ function createWeekCard(week, index) {
                 </h4>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">${week.lesson.explanation}</p>
                 
-                <!-- Video Embed -->
-                <div class="relative rounded-xl overflow-hidden bg-gray-900 aspect-video mb-4">
-                    <iframe 
-                        src="${week.lesson.videoUrl}" 
-                        title="${week.lesson.title}"
-                        class="absolute inset-0 w-full h-full"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
-                </div>
-                
                 <!-- Concepts List -->
-                <div class="bg-gray-50 rounded-xl p-4">
-                    <h5 class="font-semibold text-gray-700 mb-2 text-sm">💡 المفاهيم الأساسية:</h5>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border-2 border-blue-100">
+                    <h5 class="font-semibold text-gray-700 mb-3 text-sm flex items-center gap-2">
+                        <span class="text-lg">💡</span> المفاهيم الأساسية:
+                    </h5>
                     <ul class="space-y-2">
                         ${week.lesson.concepts.map(concept => `
-                            <li class="flex items-start gap-2 text-sm text-gray-600">
-                                <span class="text-primary mt-0.5">✓</span>
+                            <li class="flex items-start gap-2 text-sm text-gray-700 bg-white rounded-lg px-3 py-2 shadow-sm">
+                                <span class="text-green-500 font-bold mt-0.5">✓</span>
                                 <span>${concept}</span>
                             </li>
                         `).join('')}
