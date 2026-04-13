@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     
     console.log('🎓 Kids Learning Platform initialized successfully!');
+    console.log('📲 PWA Mode: Ready for offline use!');
 });
 
 /**
@@ -176,11 +177,22 @@ function getAdvice() {
 }
 
 /**
- * Save Progress to LocalStorage
+ * Save Progress to LocalStorage (PWA Enhanced)
  */
 function saveProgress(progressData) {
     try {
+        // Add timestamp for tracking
+        progressData.lastSaved = new Date().toISOString();
         localStorage.setItem('kidsLearningProgress', JSON.stringify(progressData));
+        
+        // Notify service worker about data change (for potential background sync)
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage({
+                type: 'PROGRESS_UPDATED',
+                timestamp: progressData.lastSaved
+            });
+        }
+        
         return true;
     } catch (e) {
         console.error('Error saving progress:', e);
@@ -212,6 +224,51 @@ function clearProgress() {
         console.error('Error clearing progress:', e);
         return false;
     }
+}
+
+/**
+ * Get Storage Info - Check how much progress data is stored
+ */
+function getStorageInfo() {
+    const progress = loadProgress();
+    if (progress) {
+        const size = new Blob([JSON.stringify(progress)]).size;
+        return {
+            size: size,
+            sizeKB: (size / 1024).toFixed(2),
+            lastSaved: progress.lastSaved || 'Unknown'
+        };
+    }
+    return null;
+}
+
+/**
+ * Export Progress Data (Enhanced for PWA)
+ */
+function exportProgressData() {
+    const stats = calculateProgressStats();
+    const storageInfo = getStorageInfo();
+    const data = {
+        exportDate: new Date().toISOString(),
+        programName: curriculumData.programName,
+        statistics: stats,
+        weeklyProgress: getWeeklyProgressBreakdown(),
+        achievements: getAchievementBadges(),
+        storageInfo: storageInfo
+    };
+    
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `progress-report-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast('تم تصدير التقرير بنجاح!', 'success');
 }
 
 /**

@@ -35,6 +35,16 @@
             }
         }
     </script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="المهارات الرقمية">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
 </head>
 <body class="font-cairo bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
     
@@ -68,6 +78,12 @@
                     <span id="total-progress">0%</span>
                     <span>مكتمل</span>
                 </div>
+                
+                <!-- Install Button (hidden by default, shown when PWA installable) -->
+                <button id="install-app-btn" class="hidden bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-sm font-bold hover:shadow-lg transition flex items-center gap-2">
+                    <span>📲</span>
+                    <span>تثبيت التطبيق</span>
+                </button>
                 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600">
@@ -423,6 +439,11 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
+            <!-- Connection Status Banner -->
+            <div id="connection-status" class="hidden bg-warning/90 text-white px-4 py-3 rounded-xl mb-8 text-center font-bold animate-pulse">
+                📡 أنت الآن في وضع عدم الاتصال - لا يزال بإمكانك استخدام التطبيق ومتابعة تعلمك!
+            </div>
+            
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <!-- About -->
                 <div>
@@ -543,5 +564,78 @@
     <script src="/js/app.js"></script>
     <script src="/js/curriculum.js"></script>
     <script src="/js/progress.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // Register Service Worker for offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('[PWA] ServiceWorker registration successful with scope: ', registration.scope);
+                        
+                        // Check for updates periodically
+                        setInterval(function() {
+                            registration.update();
+                        }, 60 * 60 * 1000); // Check every hour
+                    })
+                    .catch(function(error) {
+                        console.log('[PWA] ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+        
+        // Install Prompt Handling
+        let deferredPrompt;
+        const installButton = document.getElementById('install-app-btn');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('[PWA] beforeinstallprompt event fired');
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button if it exists
+            if (installButton) {
+                installButton.classList.remove('hidden');
+                
+                installButton.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log('[PWA] User response to install prompt:', outcome);
+                        deferredPrompt = null;
+                        installButton.classList.add('hidden');
+                    }
+                });
+            }
+        });
+        
+        // App installed event
+        window.addEventListener('appinstalled', () => {
+            console.log('[PWA] App was installed');
+            deferredPrompt = null;
+            if (installButton) {
+                installButton.classList.add('hidden');
+            }
+        });
+        
+        // Online/Offline Status
+        function updateOnlineStatus() {
+            const statusElement = document.getElementById('connection-status');
+            if (statusElement) {
+                if (navigator.onLine) {
+                    statusElement.classList.add('hidden');
+                } else {
+                    statusElement.classList.remove('hidden');
+                }
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        
+        // Check status on load
+        document.addEventListener('DOMContentLoaded', updateOnlineStatus);
+    </script>
 </body>
 </html>
