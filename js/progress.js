@@ -315,3 +315,45 @@ setInterval(() => {
         saveProgress(curriculumData);
     }
 }, 30000);
+
+/**
+ * PWA-Specific Progress Functions
+ */
+
+/**
+ * Check if app is running in standalone mode (installed as PWA)
+ */
+function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches || 
+           window.navigator.standalone === true;
+}
+
+/**
+ * Get PWA installation status
+ */
+function getPWAStatus() {
+    return {
+        isStandalone: isStandalone(),
+        hasServiceWorker: 'serviceWorker' in navigator,
+        isOnline: navigator.onLine,
+        storageUsed: getStorageInfo()
+    };
+}
+
+/**
+ * Request persistent storage for progress data
+ */
+async function requestPersistentStorage() {
+    if (navigator.storage && navigator.storage.persist) {
+        const granted = await navigator.storage.persist();
+        if (granted) {
+            console.log('[PWA] Storage is now persistent - data won\'t be cleared');
+            showToast('تم تثبيت التخزين الدائم للتقدم!', 'success');
+        }
+    }
+}
+
+// Try to get persistent storage on load
+if ('storage' in navigator) {
+    requestPersistentStorage();
+}
