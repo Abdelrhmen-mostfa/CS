@@ -1,5 +1,6 @@
 // Curriculum Data - Weekly Learning Content
 // This file contains all the educational content for the kids learning platform
+// Note: Video sections removed - content is text-based only for offline classes
 
 const curriculumData = {
   "programName": "رحلة المهارات الرقمية",
@@ -13,7 +14,6 @@ const curriculumData = {
       "lesson": {
         "title": "ما هو الحاسوب؟",
         "explanation": "الحاسوب هو جهاز إلكتروني يستخدم لمعالجة المعلومات وتخزينها. نتعلم اليوم كيف يعمل الحاسوب وما هي أجزاؤه الرئيسية.",
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
         "concepts": [
           "الحاسوب جهاز إلكتروني ذكي",
           "يتكون من شاشة ولوحة مفاتيح وفأرة",
@@ -24,37 +24,37 @@ const curriculumData = {
       "tasks": [
         {
           "day": "السبت",
-          "task": "مشاهدة فيديو المقدمة",
-          "tool": "يوتيوب",
-          "time": "15 دقيقة",
-          "completed": false
-        },
-        {
-          "day": "الأحد",
           "task": "قراءة شرح الدرس",
           "tool": "المنصة",
           "time": "20 دقيقة",
           "completed": false
         },
         {
-          "day": "الاثنين",
+          "day": "الأحد",
           "task": "التعرف على أجزاء الحاسوب",
           "tool": "حاسوب",
           "time": "30 دقيقة",
           "completed": false
         },
         {
-          "day": "الثلاثاء",
+          "day": "الاثنين",
           "task": "بحث عن أنواع الحواسيب",
           "tool": "إنترنت",
           "time": "25 دقيقة",
           "completed": false
         },
         {
-          "day": "الأربعاء",
+          "day": "الثلاثاء",
           "task": "إنشاء مشروع صغير",
           "tool": "Paint",
           "time": "40 دقيقة",
+          "completed": false
+        },
+        {
+          "day": "الأربعاء",
+          "task": "مراجعة وتطبيق عملي",
+          "tool": "حاسوب",
+          "time": "30 دقيقة",
           "completed": false
         }
       ],
@@ -91,7 +91,6 @@ const curriculumData = {
       "lesson": {
         "title": "كيف نستخدم الإنترنت بأمان؟",
         "explanation": "الإنترنت مثل مدينة كبيرة، يجب أن نتعلم كيف نتصفحها بأمان ونحمي معلوماتنا الشخصية.",
-        "videoUrl": "https://www.youtube.com/embed/safe-internet-kids",
         "concepts": [
           "لا تشارك معلوماتك الشخصية مع الغرباء",
           "استخدم كلمات مرور قوية",
@@ -102,8 +101,8 @@ const curriculumData = {
       "tasks": [
         {
           "day": "السبت",
-          "task": "مشاهدة فيديو الأمان الرقمي",
-          "tool": "يوتيوب",
+          "task": "قراءة شرح الأمان الرقمي",
+          "tool": "المنصة",
           "time": "20 دقيقة",
           "completed": false
         },
@@ -169,7 +168,6 @@ const curriculumData = {
       "lesson": {
         "title": "مقدمة في التفكير البرمجي",
         "explanation": "البرمجة هي طريقة لإعطاء التعليمات للحاسوب. نتعلم كيف نفكر مثل المبرمجين لحل المشكلات.",
-        "videoUrl": "https://www.youtube.com/embed/coding-for-kids",
         "concepts": [
           "الخوارزمية هي سلسلة من الخطوات",
           "التسلسل مهم في البرمجة",
@@ -180,8 +178,8 @@ const curriculumData = {
       "tasks": [
         {
           "day": "السبت",
-          "task": "مشاهدة فيديو عن البرمجة",
-          "tool": "يوتيوب",
+          "task": "قراءة شرح التفكير البرمجي",
+          "tool": "المنصة",
           "time": "20 دقيقة",
           "completed": false
         },
@@ -247,7 +245,6 @@ const curriculumData = {
       "lesson": {
         "title": "ما هو الذكاء الاصطناعي؟",
         "explanation": "الذكاء الاصطناعي هو قدرة الحاسوب على التعلم والتفكير مثل الإنسان. نكتشف معاً كيف يعمل وكيف نستخدمه.",
-        "videoUrl": "https://www.youtube.com/embed/ai-for-kids",
         "concepts": [
           "الذكاء الاصطناعي يتعلم من الأمثلة",
           "يستطيع التعرف على الصور والكلام",
@@ -258,8 +255,8 @@ const curriculumData = {
       "tasks": [
         {
           "day": "السبت",
-          "task": "مشاهدة فيديو عن الذكاء الاصطناعي",
-          "tool": "يوتيوب",
+          "task": "قراءة شرح الذكاء الاصطناعي",
+          "tool": "المنصة",
           "time": "20 دقيقة",
           "completed": false
         },

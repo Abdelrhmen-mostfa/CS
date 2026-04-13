@@ -44,8 +44,9 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                        🎓
+                    <!-- Logo Image Placeholder - Replace 'logo.png' with your actual logo file -->
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center overflow-hidden border-4 border-white shadow-md">
+                        <img src="/assets/images/logo.png" alt="شعار المنصة" class="w-full h-full object-contain p-2" onerror="this.style.display='none'; this.parentElement.innerHTML='🎓'">
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-gray-800">رحلة المهارات الرقمية</h1>
@@ -189,7 +190,7 @@
                     رحلة التعلم الأسبوعية
                 </h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
-                    كل أسبوع يحتوي على درس جديد وفيديو تعليمي ومهام عملية وتحديات إبداعية
+                    كل أسبوع يحتوي على درس جديد وشرح مكتوب ومهام عملية وتحديات إبداعية
                 </p>
             </div>
             
@@ -426,8 +427,9 @@
                 <!-- About -->
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-xl font-bold">
-                            🎓
+                        <!-- Logo in Footer -->
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center overflow-hidden border-2 border-white">
+                            <img src="/assets/images/logo.png" alt="شعار المنصة" class="w-full h-full object-contain p-2" onerror="this.style.display='none'; this.parentElement.innerHTML='🎓'">
                         </div>
                         <h3 class="text-xl font-bold">رحلة المهارات الرقمية</h3>
                     </div>
@@ -451,20 +453,45 @@
                 <!-- Contact -->
                 <div>
                     <h4 class="text-lg font-bold mb-4">تواصل معنا</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>📧 البريد الإلكتروني: info@example.com</li>
-                        <li>📱 الهاتف: +966 XXX XXX XXX</li>
-                        <li>📍 العنوان: المملكة العربية السعودية</li>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <span>📧</span>
+                            <a href="mailto:abdelrhmenmustafakhamis@gmail.com" class="hover:text-white transition break-all">
+                                abdelrhmenmustafakhamis@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span>📱</span>
+                            <a href="tel:0110081745" class="hover:text-white transition" dir="ltr">
+                                0110081745
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span>📍</span>
+                            <span>المملكة العربية السعودية</span>
+                        </li>
                     </ul>
                     <div class="flex gap-4 mt-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
-                            📘
+                        <a href="https://www.linkedin.com/in/abdelrhmanmustafa" target="_blank" 
+                           class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition transform hover:scale-110"
+                           title="LinkedIn">
+                            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
-                            🐦
+                        <a href="mailto:abdelrhmenmustafakhamis@gmail.com" 
+                           class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center hover:bg-red-600 transition transform hover:scale-110"
+                           title="Email">
+                            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                                <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                            </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
-                            📸
+                        <a href="tel:0110081745" 
+                           class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition transform hover:scale-110"
+                           title="Phone">
+                            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -472,20 +499,26 @@
             
             <!-- Developer Info -->
             <div class="border-t border-gray-800 pt-8">
-                <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-400">
-                    <div>
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-400">
+                    <div class="bg-gray-800/50 rounded-xl p-4">
                         <p class="mb-2">
                             <span class="text-white font-semibold">تطوير:</span> 
                             المهندس عبدالرحمن مصطفى
                         </p>
-                        <p>
+                        <p class="flex items-center gap-2">
                             <span class="text-white font-semibold">لينكد إن:</span> 
-                            <a href="https://linkedin.com/in/abdulrahman-mostafa" target="_blank" class="text-primary hover:underline">
-                                linkedin.com/in/abdulrahman-mostafa
+                            <a href="https://www.linkedin.com/in/abdelrhmanmustafa" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="text-blue-400 hover:text-blue-300 hover:underline transition break-all">
+                                <svg class="w-4 h-4 inline fill-current" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                                linkedin.com/in/abdelrhmanmustafa
                             </a>
                         </p>
                     </div>
-                    <div class="md:text-left">
+                    <div class="bg-gray-800/50 rounded-xl p-4 md:text-left">
                         <p class="mb-2">
                             <span class="text-white font-semibold">المنصة مطورة بواسطة:</span> 
                             مؤسسة نون للتنمية المستدامة
@@ -497,7 +530,7 @@
                 </div>
                 
                 <!-- Copyright -->
-                <div class="mt-6 pt-6 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center text-gray-500 text-sm">
                     <p>&copy; 2024 جميع الحقوق محفوظة - رحلة المهارات الرقمية</p>
                     <p class="mt-2">تم التطوير بكل ❤️ للأطفال العرب</p>
                 </div>
